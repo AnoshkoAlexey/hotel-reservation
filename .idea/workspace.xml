@@ -4,12 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d875682f-5d38-4350-93ab-abd9beb0b719" name="Changes" comment="Add IRoom interface">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/Room.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/unit/model/RoomTest.java" afterDir="false" />
+    <list default="true" id="d875682f-5d38-4350-93ab-abd9beb0b719" name="Changes" comment="Add Room class">
+      <change afterPath="$PROJECT_DIR$/src/model/FreeRoom.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/unit/model/FreeRoomTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hotel-reservation.iml" beforeDir="false" afterPath="$PROJECT_DIR$/hotel-reservation.iml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,10 +77,25 @@
       <recent name="unit.model" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.hotel-reservation">
+  <component name="RunManager" selected="JUnit.FreeRoomTest">
     <configuration name="hotel-reservation" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="hotel-reservation" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="FreeRoomTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="hotel-reservation" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="unit.model.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="unit.model" />
+      <option name="MAIN_CLASS_NAME" value="unit.model.FreeRoomTest" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -112,8 +125,14 @@
     </configuration>
     <list>
       <item itemvalue="Application.hotel-reservation" />
+      <item itemvalue="JUnit.FreeRoomTest" />
       <item itemvalue="Maven.Unnamed" />
     </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.FreeRoomTest" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -152,7 +171,14 @@
       <option name="project" value="LOCAL" />
       <updated>1668572446391</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Add Room class">
+      <created>1668638728735</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1668638728735</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -193,6 +219,7 @@
     <MESSAGE value="Add model package" />
     <MESSAGE value="Add enum RoomType.java" />
     <MESSAGE value="Add IRoom interface" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add IRoom interface" />
+    <MESSAGE value="Add Room class" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add Room class" />
   </component>
 </project>
