@@ -67,8 +67,13 @@ public class Room implements IRoom {
         return false;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public String toString() {
-        return super.toString();
+        return "Room Number: " + roomNumber + " " + enumeration.toString() + " bed" +
+                "Room Price: $" + price;
+
     }
 }
