@@ -4,14 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d875682f-5d38-4350-93ab-abd9beb0b719" name="Changes" comment="Add Customer class">
-      <change afterPath="$PROJECT_DIR$/src/model/Driver.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/hotel-reservation/model/Customer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/hotel-reservation/model/Customer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/hotel-reservation/unit/model/CustomerTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/hotel-reservation/unit/model/CustomerTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Customer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/unit/model/CustomerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/unit/model/CustomerTest.java" afterDir="false" />
-    </list>
+    <list default="true" id="d875682f-5d38-4350-93ab-abd9beb0b719" name="Changes" comment="Add Customer customer = new Customer(&quot;first&quot;, &quot;second&quot;, &quot;email&quot;);" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -226,7 +219,21 @@
       <option name="project" value="LOCAL" />
       <updated>1668647306185</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Create driver class to test customer class">
+      <created>1668650431318</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1668650431318</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Add Customer customer = new Customer(&quot;first&quot;, &quot;second&quot;, &quot;email&quot;);">
+      <created>1668651168557</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1668651168557</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -269,6 +276,8 @@
     <MESSAGE value="Add IRoom interface" />
     <MESSAGE value="Add Room class" />
     <MESSAGE value="Add Customer class" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add Customer class" />
+    <MESSAGE value="Create driver class to test customer class" />
+    <MESSAGE value="Add Customer customer = new Customer(&quot;first&quot;, &quot;second&quot;, &quot;email&quot;);" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add Customer customer = new Customer(&quot;first&quot;, &quot;second&quot;, &quot;email&quot;);" />
   </component>
 </project>
