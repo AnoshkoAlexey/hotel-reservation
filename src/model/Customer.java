@@ -14,13 +14,33 @@ public class Customer {
     private String email;
 
     /**
+     * Constructor for the Customer class that accepts 3 arguments
+     *
+     * @param firstName first name of the customer
+     * @param lastName last name of the customer
+     * @param email email of the customer
+     */
+    public Customer(String firstName, String lastName, String email) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+    }
+
+    /**
+     * Constructor for the Customer without arguments
+     */
+    public Customer() {
+    }
+
+    /**
      * Return string presentation of the customer
      *
      * @return string presentation of the customer
      */
     @Override
     public String toString() {
-        return super.toString();
+        return "First Name: " + firstName +
+                " Last Name: " + lastName + " Email: " + email;
     }
 
     /**

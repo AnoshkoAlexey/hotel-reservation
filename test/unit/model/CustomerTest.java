@@ -59,4 +59,36 @@ class CustomerTest {
         assertEquals(expectedMessage, actualMessage);
     }
 
+    @Test
+    void customerConstructorNoArgs() {
+        Customer customer = new Customer();
+        assertNull(customer.getEmail());
+        assertNull(customer.getFirstName());
+        assertNull(customer.getLastName());
+    }
+
+    @Test
+    void customerConstructor3Args() {
+        String firstName = "John";
+        String lastName = "Galt";
+        String email = "JohnGalt@gmail.com";
+        Customer customer = new Customer(firstName, lastName, email);
+        assertEquals(customer.getFirstName(), firstName);
+        assertEquals(customer.getLastName(), lastName);
+        assertEquals(customer.getEmail(), email);
+    }
+
+    @Test
+    void testToStringEmpty() {
+        Customer customer = new Customer();
+        String expected = "First Name: null Last Name: null Email: null";
+        assertEquals(customer.toString(), expected);
+    }
+
+    @Test
+    void testToStringWithFilled() {
+        Customer customer = new Customer("John", "Galt", "johngalt@gmail.com");
+        String expected = "First Name: John Last Name: Galt Email: johngalt@gmail.com";
+        assertEquals(customer.toString(), expected);
+    }
 }
