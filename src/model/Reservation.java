@@ -19,7 +19,11 @@ public class Reservation {
      */
     @Override
     public String toString() {
-        return super.toString();
+        return "Reservation \n" +
+                customer.getFirstName() + " " + customer.getLastName() +
+                "\nRoom: " + room.getRoomNumber() + " - " + room.getRoomType().toString() + " price per night" +
+                "\nCheckin Date: " + checkInDate +
+                "\nCheckout Date: " + checkOutDate;
     }
 
     /**
