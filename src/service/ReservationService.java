@@ -3,6 +3,7 @@ package service;
 import model.Customer;
 import model.IRoom;
 import model.Reservation;
+import model.Room;
 
 import java.util.*;
 
@@ -105,5 +106,4 @@ public class ReservationService {
             System.out.println(reservation.toString());
         }
     }
-
 }
