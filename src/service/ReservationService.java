@@ -31,7 +31,7 @@ public class ReservationService {
      *
      * @return instance of CustomerService class
      */
-    private ReservationService getSingleton() {
+    public static ReservationService getSingleton() {
         return SINGLETON;
     }
 

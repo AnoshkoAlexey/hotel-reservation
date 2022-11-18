@@ -4,9 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d875682f-5d38-4350-93ab-abd9beb0b719" name="Changes" comment="Create the ReservationService class">
-      <change afterPath="$PROJECT_DIR$/src/service/ReservationService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/service/ReservationServiceTest.java" afterDir="false" />
+    <list default="true" id="d875682f-5d38-4350-93ab-abd9beb0b719" name="Changes" comment="Create the HotelResource class">
+      <change afterPath="$PROJECT_DIR$/src/api/HotelResource.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/api/HotelResourceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/service/CustomerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/service/CustomerService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/service/ReservationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/service/ReservationService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,6 +75,7 @@
       <recent name="" />
     </key>
     <key name="CreateTestDialog.RecentsKey">
+      <recent name="api" />
       <recent name="service" />
       <recent name="unit.service" />
       <recent name="unit.model" />
@@ -266,7 +269,14 @@
       <option name="project" value="LOCAL" />
       <updated>1668727030149</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="Create the ReservationService class">
+      <created>1668727340946</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1668727340946</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -314,6 +324,7 @@
     <MESSAGE value="Create the CustomerService class" />
     <MESSAGE value="Change implementation of the method toString" />
     <MESSAGE value="Create the ReservationService class" />
-    <option name="LAST_COMMIT_MESSAGE" value="Create the ReservationService class" />
+    <MESSAGE value="Create the HotelResource class" />
+    <option name="LAST_COMMIT_MESSAGE" value="Create the HotelResource class" />
   </component>
 </project>
