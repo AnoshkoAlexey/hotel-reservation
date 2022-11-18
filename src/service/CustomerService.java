@@ -26,7 +26,7 @@ public class CustomerService {
      *
      * @return instance of CustomerService class
      */
-    private CustomerService getSingleton() {
+     public static CustomerService getSingleton() {
         return SINGLETON;
     }
 
