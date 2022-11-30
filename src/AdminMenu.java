@@ -26,10 +26,11 @@ public class AdminMenu {
         String line;
         Scanner scanner = new Scanner(System.in);
 
-        displayAdminMenu();
+
 
         try {
             do {
+                displayAdminMenu();
                 line = scanner.nextLine();
 
                 if (line.length() == 1) {
@@ -86,39 +87,53 @@ public class AdminMenu {
         RoomType type = enterType();
 
         Room room = new Room(roomNumber, price, type);
-
         adminResource.addRoom(Collections.singletonList(room));
-
-        System.out.println("Would you like to add another room? y/n");
         enterAnotherRoom();
     }
 
+    /**
+     * Dialog that check correctness of entered price
+     *
+     * @return a price of a room per night
+     */
     private static double enterPrice() {
         Scanner scanner = new Scanner(System.in);
         try {
             return Double.parseDouble(scanner.nextLine());
         } catch (NumberFormatException exp) {
             System.out.println("""
-                    |Invalid room price! Please, enter a valid double number.
-                    |Decimals should be separated with a point (.)""");
+                    Invalid value of the room price! Please, enter a valid double number.
+                    (use a point (.) to separate fractional part)""");
             return enterPrice();
         }
     }
 
+    /**
+     * Display dialogue that request input value and check if it is a valid room's type
+     * @return the enumeration value of room's type
+     */
     private static RoomType enterType() {
+
         Scanner scanner = new Scanner(System.in);
         String roomType = scanner.nextLine();
-        if (roomType.equals("1"))
-            return RoomType.SINGLE;
-        else if (roomType.equals("2"))
-            return RoomType.DOUBLE;
-        else {
-            System.out.println("Invalid room type! Please, enter 1 for a single bed or 2 for a double bed");
+
+        try {
+            return RoomType.valueOfLabel(roomType);
+        } catch (IllegalArgumentException e) {
+            System.out.println("""
+                    |Invalid room type!
+                    Please, choose 1 for a single bed or 2 for double bed""");
             return enterType();
         }
     }
 
+    /**
+     * Accept input value and check if another room should be created
+     */
     private static void enterAnotherRoom() {
+
+        System.out.println("Would you like to add another room? y/n");
+
         Scanner scanner = new Scanner(System.in);
 
         try {
@@ -152,13 +167,11 @@ public class AdminMenu {
         Collection<IRoom> rooms = adminResource.getAllRooms();
 
         if (rooms.isEmpty()) {
-            System.out.println("No rooms found.");
+            System.out.println("No rooms found");
         } else {
-            for (IRoom room: rooms)
-                System.out.println(room);
+            System.out.println("Rooms");
+            rooms.forEach(System.out::println);
         }
-
-        displayAdminMenu();
     }
 
     /**
@@ -169,14 +182,12 @@ public class AdminMenu {
         Collection<Customer> customers = adminResource.getAllCustomers();
 
         if (customers.isEmpty()) {
-            System.out.println("No customers found.");
+            System.out.println("No customers found");
         } else {
-            for (Customer customer: customers) {
-                System.out.println(customer);
-            }
+            System.out.println("Customers");
+            customers.forEach(System.out::println);
         }
 
-        displayAdminMenu();
     }
 
     /**
@@ -184,7 +195,5 @@ public class AdminMenu {
      */
     private static void displayAllReservations() {
         adminResource.displayAllReservations();
-        displayAdminMenu();
     }
 }
-

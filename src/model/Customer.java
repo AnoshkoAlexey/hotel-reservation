@@ -107,6 +107,7 @@ public class Customer {
      * @throws IllegalArgumentException In case if the email isn't valid
      */
     private void checkEmail(String email) throws IllegalArgumentException{
+
         String regexPattern = "^(?=.{1,64}@)[A-Za-z0-9_-]+(\\.[A-Za-z0-9_-]+)*@"
                 + "[^-][A-Za-z0-9-]+(\\.[A-Za-z0-9-]+)*(\\.[A-Za-z]{2,})$";
         if  (!Pattern.compile(regexPattern).matcher(email).matches())

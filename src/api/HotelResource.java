@@ -16,14 +16,23 @@ import java.util.*;
 
 public class HotelResource {
 
-    private final CustomerService customerService = CustomerService.getSingleton();
-    private final ReservationService reservationService = ReservationService.getSingleton();
-
+    private final CustomerService customerService;
+    private final ReservationService reservationService;
     private static final HotelResource SINGLETON = new HotelResource();
 
-    private HotelResource() {}
+    /**
+     * Define default constructor
+     */
+    private HotelResource() {
+        customerService = CustomerService.getSingleton();
+        reservationService = ReservationService.getSingleton();
+    }
 
-
+    /**
+     * Return singleton of the class
+     *
+     * @return
+     */
     public static HotelResource getSingleton() {
         return SINGLETON;
     }
@@ -45,7 +54,7 @@ public class HotelResource {
      * @param firstName customer's first name
      * @param lastName customer's last name
      */
-    public void createACustomer(String email, String firstName, String lastName) {
+    public void createCustomer(String email, String firstName, String lastName) {
         customerService.addCustomer(email, firstName, lastName);
     }
 
@@ -80,6 +89,7 @@ public class HotelResource {
      * @return collection of the customer's reservations
      */
     public Collection<Reservation> getCustomerReservations(String customerEmail) {
+
         Customer customer = customerService.getCustomer(customerEmail);
 
         return Objects.isNull(customer) ? Collections.emptyList() : reservationService.getCustomersReservation(customer);
@@ -90,10 +100,32 @@ public class HotelResource {
      *
      * @param checkIn first date of reservation
      * @param checkOut last date of reservation
-     * @return collection of free rooms in required time interval
+     * @return a collection of rooms available in requested time interval
      */
     public Collection<IRoom> findARoom(Date checkIn, Date checkOut) {
         return reservationService.findRooms(checkIn, checkOut);
 
+    }
+
+    /**
+     * Look for a room within alternative period
+     *
+     * @param checkIn original begin of reservation
+     * @param checkOut original end of reservation
+     *
+     * @return a collection of rooms available in alternative time interval
+     */
+    public Collection<IRoom> findAlternativeRooms(Date checkIn, Date checkOut) {
+        return reservationService.findAlternativeRooms(checkIn, checkOut);
+    }
+
+    /**
+     * Add days to a date
+     *
+     * @param date original date
+     * @return a date after addition of necessary number of days
+     */
+    public Date addDays(Date date) {
+        return reservationService.addDays(date);
     }
 }
