@@ -15,16 +15,23 @@ import java.util.List;
  */
 public class AdminResource {
 
-    private final CustomerService customerService = CustomerService.getSingleton();
-    private final ReservationService reservationService = ReservationService.getSingleton();
+    private final CustomerService customerService;
+    private final ReservationService reservationService;
 
     private static final AdminResource SINGLETON  = new AdminResource();
 
-    private AdminResource() {}
+    /**
+     * Default constructor
+     */
+    private AdminResource() {
+        customerService = CustomerService.getSingleton();
+        reservationService = ReservationService.getSingleton();
+    }
 
     /**
      * Returns singleton implementation of the class
-     * @return
+     *
+     * @return singleton
      */
     public static AdminResource getSingleton() {
         return SINGLETON;
@@ -46,9 +53,7 @@ public class AdminResource {
      * @param rooms a collection of rooms
      */
     public void addRoom(List<IRoom> rooms) {
-        for (IRoom room: rooms) {
-            reservationService.addRoom(room);
-        }
+        rooms.forEach(reservationService::addRoom);
     }
 
     /**
@@ -57,7 +62,7 @@ public class AdminResource {
      * @return a collection of rooms registered in the system
      */
     public Collection<IRoom> getAllRooms() {
-        return reservationService.findRooms(null, null);
+        return reservationService.getAllRooms();
     }
 
     /**

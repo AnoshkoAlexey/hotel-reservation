@@ -15,6 +15,28 @@ public class Reservation {
     private Date checkOutDate;
 
     /**
+     * Default constructor for a reservation object
+     */
+    public Reservation() {}
+
+
+    /**
+     * Constructor for a reservation object with all parameter
+     *
+     * @param customer a customer who does reservation
+     * @param room a room that will be reserved
+     * @param checkInDate start of reservation
+     * @param checkOutDate end of reservation
+     */
+    public Reservation(Customer customer, IRoom room, Date checkInDate, Date checkOutDate) {
+        this.customer = customer;
+        this.room = room;
+        this.checkInDate = checkInDate;
+        this.checkOutDate = checkOutDate;
+    }
+
+
+    /**
      * {@inheritDoc}
      */
     @Override

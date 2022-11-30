@@ -3,9 +3,9 @@ package service;
 import model.Customer;
 import model.IRoom;
 import model.Reservation;
-import model.Room;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * A class that allows to manage a collection of reservations
@@ -15,15 +15,19 @@ import java.util.*;
 public class ReservationService {
 
     /** Keeps collection of all reservations */
-    private final Set<Reservation> reservations;
+    private final Map<String, Collection<Reservation>> reservations;
 
     /** Keep collection of all rooms */
     private final Map<String, IRoom> rooms;
-
     private static final ReservationService SINGLETON = new ReservationService();
 
+    private static final int ALTERNATIVE_DATES_PERIOD_DAYS = 7;
+
+    /**
+     * Default constructor for the reservation service
+     */
     private ReservationService() {
-        reservations = new HashSet<>();
+        reservations = new HashMap<>();
         rooms = new HashMap<>();
     }
 
@@ -48,11 +52,20 @@ public class ReservationService {
     /**
      * Look for a room with required number
      *
-     * @param roomId number of the room
+     * @param roomNumber number of the room
      * @return a room with required number
      */
-    public IRoom getARoom(String roomId) {
-        return rooms.get(roomId);
+    public IRoom getARoom(String roomNumber) {
+        return rooms.get(roomNumber);
+    }
+
+    /**
+     * Retun all rooms entered to the system
+     *
+     * @return the collection of rooms
+     */
+    public Collection<IRoom> getAllRooms() {
+        return rooms.values();
     }
 
     /**
@@ -66,44 +79,118 @@ public class ReservationService {
      * @return a reference for the reservation
      */
     public Reservation reserveARoom(Customer customer, IRoom room, Date checkInDate, Date checkOutDate){
-        Reservation reservation = new Reservation();
-        reservation.setCustomer(customer);
-        reservation.setRoom(room);
-        reservation.setCheckInDate(checkInDate);
-        reservation.setCheckOutDate(checkOutDate);
-        reservations.add(reservation);
+
+        Reservation reservation = new Reservation(customer, room, checkInDate, checkInDate);
+
+        Collection<Reservation> customerReservations = getCustomersReservation(customer);
+
+        if (Objects.isNull(customerReservations)) {
+            customerReservations = new LinkedList<>();
+        }
+
+        customerReservations.add(reservation);
+        reservations.put(customer.getEmail(), customerReservations);
+
         return reservation;
     }
 
     /**
-     * Return a collection of free rooms in interval between two dates
+     * Return a collection of available rooms in interval between two dates
      *
      * @param checkInDate date when reservation start
      * @param checkOutDate date when reservation end
      * @return a collection of free rooms in interval between two dates
      */
-     //TODO implementation of the method
     public Collection<IRoom> findRooms(Date checkInDate, Date checkOutDate) {
-        return rooms.values();
+        return findAvailableRooms(checkInDate, checkOutDate);
     }
 
     /**
-     * Returns collection of reservations made by the customer
+     * Looks for available rooms in a defined period
+     *
+     * @param checkInDate begin of reservation
+     * @param checkOutDate end of reservation
+     * @return collection of rooms available in this period
+     */
+    private Collection<IRoom> findAvailableRooms(Date checkInDate, Date checkOutDate) {
+
+        Collection<Reservation> allReservations = getAllReservations();
+        Collection<IRoom> busyRooms = new LinkedList<>();
+
+        allReservations.forEach(reservation -> {
+            if (checkInDate.before(reservation.getCheckOutDate()) &&
+                    checkOutDate.after(reservation.getCheckInDate())) {
+                busyRooms.add(reservation.getRoom());
+            }
+        });
+
+        return rooms
+                .values()
+                .stream()
+                .filter(room -> busyRooms.stream().noneMatch(busyRoom -> busyRooms.equals(room)))
+                .collect(Collectors.toList());
+    }
+
+    /**
+     * Looks for alternative rooms in a defined period
+     *
+     * @param checkInDate start of reservation
+     * @param checkOutDate end of reservation
+     * @return collection of free rooms in a defined period
+     */
+    public Collection<IRoom> findAlternativeRooms(Date checkInDate, Date checkOutDate) {
+        return findAvailableRooms(addDays(checkInDate), addDays(checkInDate));
+    }
+
+    /**
+     * Get a collection of all reservations
+     *
+     * @return collection of all reservations
+     */
+    private Collection<Reservation> getAllReservations() {
+
+        Collection<Reservation> allReservations = new LinkedList<>();
+        reservations.values().forEach(allReservations::addAll);
+        return allReservations;
+    }
+
+
+    /**
+     * Return a collection of reservations made by a customer
      *
      * @param customer the customer who made reservations
-     * @return A collcection of reservations made by the customer
+     * @return A collection of reservations made by the customer
      */
-    //TODO implementation of the method
     public Collection<Reservation> getCustomersReservation(Customer customer) {
-        return reservations;
+        return reservations.get(customer.getEmail());
     }
 
     /**
-     * Print all reservations
+     * Display all reservations
      */
     public void printAllReservation() {
-        for (Reservation reservation : reservations) {
-            System.out.println(reservation.toString());
+
+        Collection<Reservation> reservations = getAllReservations();
+
+        if (reservations.isEmpty()) {
+            System.out.println("No reservations found");
+        } else {
+            reservations.forEach(System.out::println);
         }
+    }
+
+    /**
+     * Add default number of days to the date
+     *
+     * @param date an original date
+     * @return a date with default number of days added
+     */
+    public Date addDays(Date date) {
+
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
+        calendar.add(Calendar.DATE, ALTERNATIVE_DATES_PERIOD_DAYS);
+
+        return calendar.getTime();
     }
 }

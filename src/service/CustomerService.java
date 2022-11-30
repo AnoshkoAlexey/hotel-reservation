@@ -17,6 +17,9 @@ public class CustomerService {
 
     private static final CustomerService SINGLETON = new CustomerService();
 
+    /**
+     * Default constructor for Customer Service class
+     */
     private CustomerService() {
         customers = new HashMap<>();
     }
